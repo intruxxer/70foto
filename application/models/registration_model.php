@@ -8,13 +8,20 @@
  * @since   20 September 2015
  */
 
-class registration_model extends MY_Model {
+class registration_model extends CI_Model {
 
     protected $table        = 'tbl_registration';
     protected $key          = 'registration_id';
 
     public function __construct(){
         parent::__construct();
+    }
+
+    public function get_all_registration(){
+        return $this->db->select('*')
+                        ->from($this->table)
+                        ->get()
+                        ->result();
     }
 
     public function get_registration($id){

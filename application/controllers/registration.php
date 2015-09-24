@@ -4,12 +4,13 @@ class Registration extends CI_Controller {
 
   public function __construct(){
     parent::__construct();
-    $this->load->model('registration_model');
+    //$this->load->model('registration_model');
   }
 
   public function index()
   {
     $this->load->view('welcome_message');
   }
+
 }
 
