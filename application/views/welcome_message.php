@@ -70,6 +70,12 @@
 	<h1>Welcome to CodeIgniter!</h1>
 
 	<div id="body">
+		<form action="<?php echo site_url('registration/submit'); ?>" method="POST" enctype='multipart/form-data'>
+            <input type="file" name="userfiles[]" />
+            <input type="file" name="userfiles[]" />
+            <input type="file" name="userfiles[]" />
+            <input type="submit" name="submit" value="submit" />
+        </form>
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 
 		<p>If you would like to edit this page you'll find it located at:</p>
