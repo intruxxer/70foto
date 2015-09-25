@@ -27,7 +27,7 @@ class registration_model extends CI_Model {
     public function get_registration($id){
         return $this->db->select('*')
                         ->from($this->table)
-                        ->where('registration_id', $id)
+                        ->where($this->key, $id)
                         ->get()
                         ->result();
     }
