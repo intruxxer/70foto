@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url('../fonts/Lato-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Lato-Bold';
+  src: url('../fonts/Lato-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Lato-Light';
+  src: url('../fonts/Lato-Light.ttf');
+}
+
+h1, h2, h3, h4, h5, h6, p, span, {
+	font-family: 'Lato-Regular';
+}
+
+label {
+	font-family: 'Lato-Light';
+	color: #fff;
+	font-size: 13px;
+}
+
+.container{
+	background-color: #98272d;
+	font-family: 'Lato-Regular';
+  width: 100%;
+  height: auto;
+}
+
+.wrapper{
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+z-index: 0;
+}
+
+.menu {
+	z-index: 100;
+	position: absolute;
+	width: 100%;
+	height: auto;
+	left:0px;
+  top:0px;
+}
+
+div.customForm {
+  padding-left: 185px;
+  padding-top: 50px;
+}
+
+div.customForm h1 {
+	margin-left: -100px;
+	margin-bottom: 30px;
+	font-family: 'Lato-Bold';
+  color: #fff;
+	font-size: 50px;
+}
+
+div.customForm h3 {
+  font-family: 'Lato-Bold';
+  color: #fff;
+}
+
+div.customForm p {
+	font-family: 'Lato-Light';
+  color: #fff;
+	font-size: 13px;
+	padding-bottom: 20px;
+}
+
+div.customForm form {
+	width: 320px;
+}
+
+div.customForm input {
+	font-family: 'Lato-Light';
+	font-size: 12px;
+}
+
+span.fileinput-filename{
+   white-space: nowrap;
+    width: 200px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+div.customForm .form-control {
+	height: 45px;
+	border: solid 1px #e3e4e8;
+}

@@ -3,14 +3,9 @@
 class Registration extends CI_Controller {
 
   public function __construct(){
-    parent::__construct();
-	  date_default_timezone_set('Asia/Jakarta');
-    $this->load->model('registration_model', 'registration');
-  }
-
-  public function index()
-  {
-  		$this->load->view('welcome_message');
+      parent::__construct();
+  	  date_default_timezone_set('Asia/Jakarta');
+      $this->load->model('registration_model', 'registration');
   }
 
   public function submit()
@@ -19,7 +14,7 @@ class Registration extends CI_Controller {
   		if(!empty($_FILES['userfiles']))
   		{
     			$docs_uploaded_path = $this->docs_upload($_FILES['userfiles']);
-          print_r($docs_uploaded_path);
+          //print_r($docs_uploaded_path);
           $data = array(
                 'registration_name'         => $this->input->post('nama'),
                 'registration_age'          => $this->input->post('umur'),
@@ -31,6 +26,7 @@ class Registration extends CI_Controller {
           );
 
           $insert_id = $this->registration->insert_registration($data);
+
           if($insert_id)
           {
               echo "Success Uploading two files!";

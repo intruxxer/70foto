@@ -1,25 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>70Foto</title>
-</head>
-<body>
-
-<div id="container">
-	<h1>File Upload.</h1>
-	<div id="body">
-		<form action="<?php echo site_url('registration/submit'); ?>" method="POST" enctype='multipart/form-data'>
-            <div>Nama <input type="text" name="nama" /></div>
-            <div>Umur <input type="text" name="umur" /></div>
-            <div>Alamat <input type="text" name="alamat" /></div>
-            <div>No. HP/Telephon<input type="text" name="phone" /></div>
-            <div>KTP <input type="file" name="userfiles[]" /></div>
-            <div>Foto <input type="file" name="userfiles[]" /></div>
-            <div><input type="submit" name="submit" value="Submit" /></div>
-    </form>
-	</div>
+<div class="container">
+<div class="wrapper">
+   <img src="<?php echo base_url('assets/img/bg.png') ?>" class="img-responsive" alt="Responsive image">
 </div>
 
-</body>
-</html>
+<div class="menu">
+    <div class="row">
+        <div class="col-md-6">
+
+        </div>
+
+        <div class="col-md-6 customForm">
+            <h1>KAPSUL WAKTU 2015</h1>
+            <h3>Daftar Sekarang</h2>
+            <p>Isilah Form Berikut Secara Lengkap dan Upload Foto kamu</p>
+            <form id="form-foto" action="<?php echo site_url('registration/submit'); ?>" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="Name" name="nama" class="form-control" placeholder="Nama Lengkap" required data-parsley-required="true">
+              </div>
+              <div class="form-group">
+                <label>Alamat Lengkap</label>
+                <input type="address" name="alamat" class="form-control" placeholder="Alamat Lengkap" required data-parsley-required="true">
+              </div>
+              <div class="form-group">
+                <label>No HP</label>
+                <input type="phone" name="phone" class="form-control" placeholder="No HP" required data-parsley-required="true">
+              </div>
+              <div class="form-group">
+                <label>Tanggal Lahir</label>
+                <div class='input-group date'>
+                    <input type='text' name="umur" id='datetimeage' class="form-control" required data-parsley-required="true">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="">KTP/SIM</label>
+                <div class="form-group fileinput fileinput-new input-group" data-provides="fileinput">
+                  <div class="form-control" data-trigger="fileinput">
+                    <span class="fileinput-filename"></span>
+                  </div>
+                  <span class="input-group-addon btn btn-default btn-file" style="background: #631C20; color: #fff;">
+                    <span class="fileinput-new">Select file</span>
+                    <span class="fileinput-exists">Change</span>
+                    <input type="file" name="userfiles[]" required data-parsley-required="true">
+                  </span>
+                  <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput" style="background: #000; color: #fff;">
+                    Remove</a>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="">Foto</label>
+                <div class="form-group fileinput fileinput-new input-group" data-provides="fileinput">
+                  <div class="form-control" data-trigger="fileinput">
+                    <span class="fileinput-filename"></span>
+                  </div>
+                  <span class="input-group-addon btn btn-default btn-file" style="background: #631C20; color: #fff;">
+                    <span class="fileinput-new">Select file</span>
+                    <span class="fileinput-exists">Change</span>
+                    <input type="file" name="userfiles[]" required data-parsley-required="true">
+                  </span>
+                  <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput" style="background: #000; color: #fff;">
+                    Remove</a>
+                </div>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="rule-ok" required data-parsley-required="true"> Saya bersedia mematuhi regulasi kompetisi.
+                </label>
+              </div>
+              <button type="submit" class="btn btn-default btn-submit" style="background: #000; color: #fff; border: none; height: 45px; float: right;">Submit</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+</div><!-- container -->
+<script type="text/javascript">
+  $(function () {
+      $('#datetimeage').datetimepicker({ format: 'DD-MM-YYYY' });
+  });
+
+  $('.fileinput').fileinput();
+
+  $('#form-foto').parsley();
+</script>
