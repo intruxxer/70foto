@@ -73,6 +73,12 @@
                   <input type="checkbox" name="rule-ok" required data-parsley-required="true"> Saya bersedia mematuhi regulasi kompetisi.
                 </label>
               </div>
+              <div class="form-group">
+                <label>
+                  <?php echo $this->session->userdata('upload_msg'); ?>
+                  <?php $this->session->set_userdata('upload_msg', ''); ?>
+                </label>
+              </div>
               <button type="submit" class="btn btn-default btn-submit" style="background: #000; color: #fff; border: none; height: 45px; float: right;">Submit</button>
             </form>
         </div>

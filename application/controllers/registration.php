@@ -6,15 +6,14 @@ class Registration extends CI_Controller {
       parent::__construct();
   	  date_default_timezone_set('Asia/Jakarta');
       $this->load->model('registration_model', 'registration');
+      $this->load->library('session');
   }
 
   public function submit()
   {
-      //print_r($this->input->post());
   		if(!empty($_FILES['userfiles']))
   		{
     			$docs_uploaded_path = $this->docs_upload($_FILES['userfiles']);
-          //print_r($docs_uploaded_path);
           $data = array(
                 'registration_name'         => $this->input->post('nama'),
                 'registration_age'          => $this->input->post('umur'),
@@ -29,17 +28,19 @@ class Registration extends CI_Controller {
 
           if($insert_id)
           {
-              echo "Success Uploading two files!";
+              $this->session->set_userdata('upload_msg', '<span style="background-color: green;">Foto Anda telah berhasil diunggah. Terimakasih.</span>');
               redirect('home', 'refresh');
           }
           else
           {
+              $this->session->set_userdata('upload_msg', '<span style="background-color: red;">Foto Anda gagal diunggah. Silakan diulang kembali.</span>');
               redirect('home', 'refresh');
           }
   		}
   		else
   		{
-          //var_dump($_FILES['files']);
+          $this->session->set_userdata('upload_msg', '<span style="background-color: red;">Foto Anda gagal diunggah. Silakan diulang kembali.</span>');
+          redirect('home', 'refresh');
   		}
 
   }
@@ -76,20 +77,19 @@ class Registration extends CI_Controller {
 	}
 
   private function upload_multiple_files($field='userfiles'){
-      $files = array();
+      $files = array(); $salt = md5(time());
       foreach( $_FILES[$field] as $key => $all )
         if($key == 'name')
         {
-             //print_r($all);
             foreach( $all as $i => $val )
             {
                 switch ($i) {
                 case 0:
-                  $filename = "id_".$val;//.md5(time());
+                  $filename = "id_" .$salt ."_" .$val;
                   $files[$i][$key] = $filename;
                   break;
                 case 1:
-                  $filename = "foto_".$val;//.md5(time());
+                  $filename = "foto_" .$salt ."_" .$val;
                   $files[$i][$key] = $filename;
                   break;
                 default:
