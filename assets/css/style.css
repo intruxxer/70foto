@@ -50,6 +50,7 @@ z-index: 0;
 div.customForm {
   padding-left: 185px;
   padding-top: 50px;
+  padding-bottom: 100px;
 }
 
 div.customForm h1 {
@@ -93,4 +94,73 @@ span.fileinput-filename{
 div.customForm .form-control {
 	height: 45px;
 	border: solid 1px #e3e4e8;
+}
+
+
+
+/*responsive*/
+
+@media only screen and (min-width: 1350px) {
+    body {
+        overflow-x: hidden;
+    }
+}
+
+@media only screen and (max-width: 1225px) {
+	body {
+		background-color: #98272d;
+	}
+
+	div.customForm {
+		padding-left: 10%;
+  		/*padding-top: 50px;*/
+
+	}
+
+	div.customForm form {
+		width: 80%;
+		min-width: 311px;
+	}
+}
+
+@media only screen and  (max-width: 992px) {
+	div.customForm h1 {
+		margin-left: 220px;
+		padding-bottom: 130px;
+	}
+
+	.img-responsive {
+		height: 300px;
+		width: auto;
+	}
+
+
+}
+
+@media only screen and  (max-width: 992px) {
+	div.customForm h1 {
+		padding-bottom: 100px;
+	}
+}
+
+@media only screen and (max-height: 768px) {
+	div.customForm .form-control {
+		height: 35px;
+		
+	}
+	div.customForm {
+		padding-top: 10px;
+	}
+}
+
+@media only screen and (max-width: 438px) {
+	.img-responsive {
+		height: auto;
+		width: 388px;
+	}
+
+	div.customForm h1 {
+		font-size: 35px;
+		margin-left: 200px;
+	}
 }

@@ -7,10 +7,59 @@ class Registration extends CI_Controller {
   	  date_default_timezone_set('Asia/Jakarta');
       $this->load->model('registration_model', 'registration');
       $this->load->library('session');
+      $this->load->helper('download');
   }
 
-  public function submit()
-  {
+  public function favourite($type='', $id=''){
+      if($type=='' || $id=='')
+      {
+          $type = 'type';
+          $id   = 'id';
+          //$type = $this->input->post('type');
+          //$id   = $this->input->post('r_id');
+          $response  = array('id' => $id, 'type' => $type);
+          $this->output->set_content_type('application/json')->set_output( json_encode($response) );
+      }
+      else
+      {
+          if($type=='s')
+          {
+              $favourite = $this->registration->set_favourite($id);
+              if($favourite)
+                $response  = json_encode(array('id' => $id, 'result' => 'set OK'));
+              else
+                $response  = json_encode(array('id' => $id, 'result' => 'set ERROR'));
+              $this->output->set_content_type('application/json')->set_output( $response );
+
+          }
+          else if($type=='u')
+          {
+              $favourite = $this->registration->unset_favourite($id);
+              if($favourite)
+                $response  = json_encode(array('id' => $id, 'result' => 'unset OK'));
+              else
+                $response  = json_encode(array('id' => $id, 'result' => 'unset ERROR'));
+              $this->output->set_content_type('application/json')->set_output( $response );
+          }
+      }
+  }
+
+  public function delete($id=''){
+      $deleted = $this->registration->delete_registration($id);
+      if($deleted)
+        $response  = json_encode(array('id' => $id, 'result' => 'delete OK'));
+      else
+        $response  = json_encode(array('id' => $id, 'result' => 'delete ERROR'));
+      $this->output->set_content_type('application/json')->set_output( $response );
+  }
+
+  public function download($filename, $path){
+      $data = file_get_contents($path);
+      $name = $filename;
+      force_download($name, $data);
+  }
+
+  public function submit(){
   		if(!empty($_FILES['userfiles']))
   		{
     			$docs_uploaded_path = $this->docs_upload($_FILES['userfiles']);
@@ -42,11 +91,9 @@ class Registration extends CI_Controller {
           $this->session->set_userdata('upload_msg', '<span style="background-color: red;">Foto Anda gagal diunggah. Silakan diulang kembali.</span>');
           redirect('home', 'refresh');
   		}
-
   }
 
-	private function docs_upload($files)
-	{
+	private function docs_upload($files){
 		$docs_uploaded_path = array();
 		$path = "./files/" .date('d-m-Y', strtotime('now'));
 
