@@ -19,7 +19,7 @@
 
       <div class="">
         <div class="row">
-        <form class="form-signin" method="post" action="<?php echo site_url('login/checklogin'); ?>">
+        <form class="form-signin" method="post" action="<?php echo site_url('auth/login'); ?>">
             <h4 class="form-signin-heading text-center">Kapsul Waktu 2015<br/>Photo Management System</h4>
             <label for="" class="sr-only">Username</label>
             <input type="text" name="username" class="form-control" placeholder="" required="" autofocus="">

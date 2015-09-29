@@ -53,12 +53,6 @@ class Registration extends CI_Controller {
       $this->output->set_content_type('application/json')->set_output( $response );
   }
 
-  public function download($filename, $path){
-      $data = file_get_contents($path);
-      $name = $filename;
-      force_download($name, $data);
-  }
-
   public function submit(){
   		if(!empty($_FILES['userfiles']))
   		{
@@ -161,6 +155,13 @@ class Registration extends CI_Controller {
       }
 
       return $files_uploaded;
+  }
+
+  //Unused
+  private function download($filename, $path){
+      $data = file_get_contents($path);
+      $name = $filename;
+      force_download($name, $data);
   }
 
 

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Auth extends CI_Controller {
 
   public function __construct(){
     parent::__construct();
@@ -13,7 +13,7 @@ class Login extends CI_Controller {
       $this->load->view('admin/login');
   }
 
-  public function checklogin()
+  public function login()
   {
       $username = $this->input->post('username');
       $password = $this->input->post('password');
@@ -28,9 +28,16 @@ class Login extends CI_Controller {
             'login_msg',
             '<span style="background-color: red; color: white;">Username/Password anda INVALID.</span>'
           );
-          redirect('login', 'refresh');
+          redirect('auth', 'refresh');
       }
 
+  }
+
+  public function logout()
+  {
+      $this->session->unset_userdata('logged_in');
+      session_destroy();
+      redirect('auth', 'refresh');
   }
 
   public function generic()
@@ -40,7 +47,7 @@ class Login extends CI_Controller {
 
         }else
         {
-            redirect('login', 'refresh');
+            redirect('auth', 'refresh');
         }
   }
 

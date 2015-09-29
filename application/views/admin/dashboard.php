@@ -9,7 +9,8 @@
 <div class="container">
     <div class="clearfix"></div>
     <div class="row">
-        <label style="float: right;"><input type="checkbox" class="vote_filter" <?php if($filter=='active') echo 'checked="checked"' ?>> Filter</label>
+        <?php if( $this->session->userdata('logged_in') ) { ?><label style="float: right;"><a href="<?php echo site_url('auth/logout'); ?>" class="btn btn-danger">Sign out</a></label><?php } ?>
+        <label style="float: left;"><input type="checkbox" class="vote_filter" <?php if($filter=='active') echo 'checked="checked"' ?>> Filter</label>
     </div>
     <div class="row"><hr></div>
     <div class="row">
