@@ -28,4 +28,4 @@
     <script src="<?php //echo base_url('assets/js/parsley/lang/id.extra.js') ?>"></script>
     <script src="<?php //echo base_url('assets/js/core/main.js') ?>"></script>
 </head>
-<body>
+<body class="red">

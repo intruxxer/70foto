@@ -10,6 +10,13 @@ class Registration extends CI_Controller {
       $this->load->helper('download');
   }
 
+  public function index()
+  {
+    $this->load->view('header');
+    $this->load->view('registration');
+    $this->load->view('footer');
+  }
+
   public function favourite($type='', $id=''){
       if($type=='' || $id=='')
       {
@@ -86,7 +93,7 @@ class Registration extends CI_Controller {
   		else
   		{
           $this->session->set_userdata('upload_msg', '<span style="background-color: red;">Foto Anda gagal diunggah. Silakan diulang kembali.</span>');
-          redirect('home', 'refresh');
+          redirect('registration', 'refresh');
   		}
   }
 

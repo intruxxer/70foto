@@ -1,3 +1,5 @@
+
+
 @font-face {
   font-family: 'Lato-Regular';
   src: url('../fonts/Lato-Regular.ttf');
@@ -23,48 +25,23 @@ label {
 	font-size: 13px;
 }
 
-a:hover, a:focus {
-    color: #fff;
-    text-decoration: none;
-}
-
-body.red {
-		background-color: #98272d;
-	}
-
-.red {
-	background-color: #98272d;
-}
-.black {
-	background-color: #000;
-}
-
-.white {
-	background-color: #fff;
-}
 .container{
-	/*background-color: #98272d;*/
+	background-color: #98272d;
 	font-family: 'Lato-Regular';
   width: 100%;
   height: auto;
 }
 
-
-
 .wrapper{
-	/*margin-top: -70px;*/
-	margin-left: -20px;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
-z-index: -999;
+z-index: 0;
 }
 
-
-/*FORM*/
 .menu {
-
+	z-index: 100;
 	position: absolute;
 	width: 100%;
 	height: auto;
@@ -74,12 +51,12 @@ z-index: -999;
 
 div.customForm {
   padding-left: 185px;
-
+  padding-top: 50px;
   padding-bottom: 100px;
 }
 
 div.customForm h1 {
-	margin-left: -170px;
+	margin-left: -100px;
 	margin-bottom: 30px;
 	font-family: 'Lato-Bold';
   color: #fff;
@@ -89,13 +66,6 @@ div.customForm h1 {
 div.customForm h3 {
   font-family: 'Lato-Bold';
   color: #fff;
-}
-
-div.customForm span {
-	font-family: 'Lato-Regular';
-	font-size: 10px;
-	/*color: #fff;*/
-
 }
 
 div.customForm p {
@@ -124,106 +94,10 @@ span.fileinput-filename{
 }
 
 div.customForm .form-control {
-
+	height: 45px;
 	border: solid 1px #e3e4e8;
 }
 
-
-/*NAVIGASI*/
-
-div.nav {
-	height: 50px;
-}
-
-div.nav ul.row {
-	padding-bottom: 20px;
-	border-bottom: 1px solid #fff;
-
-}
-div.nav ul {
-	margin-bottom: 0px;
-}
-
-div.nav ul li {
-	padding-top: 13px;
-	color: #fff;
-	text-decoration: none;
-	list-style: none;
-	font-size: 16px;
-}
-
-div.nav ul li.active a {
-	border-bottom: 2px solid #fff;
-
-}
-
-div.nav ul li a {
-	color: #fff;
-}
-
-div.nav ul li a:hover {
-	border-bottom: 2px solid #fff;
-	transition: border-bottom .1s ease-in-out;
-    -moz-transition: border-bottom .1s ease-in-out;
-    -webkit-transition: border-bottom .1s ease-in-out;
-	
-}
-
-/*home*/
-
-.homeContent {
-	padding-top: 100px;
-}
-
-.homePhoto {
-	padding: 0px;
-
-}
-
-.homeDescr {
-	padding: 10px 100px 10px 30px;
-}
-
-.homeDescr h2 {
-	font-family: 'Lato-Bold';
-	color: #fff;
-}
-
-.homeDescr p {
-	font-family: 'Lato-Light';
-	color: #fff;
-	/*margin-top: 50px;*/
-}
-
-.homeDescr img {
-	padding-top: 10px;
-	padding-bottom: 
-}
-
-/*Syarat dan Ketentuan*/
-
-div.Faq {
-	padding: 10px 100px 10px 50px;
-}
-
-div.Faq h2 {
-	font-family: 'Lato-Bold';
-	color: #fff;
-}
-
-div.Faq ol li {
-	font-family: 'Lato-Regular';
-	color: #fff;
-	font-size: 12px;
-	margin-left: 20px;
-
-}
-
-div.syarat {
-	padding-top: 20px;
-}
-
-div.
 
 
 /*responsive*/
@@ -235,7 +109,9 @@ div.
 }
 
 @media only screen and (max-width: 1225px) {
-	
+	body {
+		background-color: #98272d;
+	}
 
 	div.customForm {
 		padding-left: 10%;
@@ -252,19 +128,12 @@ div.
 @media only screen and  (max-width: 992px) {
 	div.customForm h1 {
 		margin-left: 220px;
-		margin-top: 180px;
-		margin-bottom: 40px;
-		/*padding-bottom: 150px;*/
+		padding-bottom: 130px;
 	}
 
 	.img-responsive {
-		margin-top: 140px;
 		height: 300px;
 		width: auto;
-	}
-
-	div.nav ul {
-		padding-left: 20px;
 	}
 
 
@@ -284,18 +153,7 @@ div.
 	div.customForm {
 		padding-top: 10px;
 	}
-
-	div.customForm h1 {
-		font-size: 30px;
-	}
 }
-
-@media only screen and  (max-width: 767px) {
-		div.customForm h1 {
-			font-size: 35px;
-		}
-}
-
 
 @media only screen and (max-width: 438px) {
 	.img-responsive {
@@ -304,7 +162,7 @@ div.
 	}
 
 	div.customForm h1 {
-		font-size: 20px;
+		font-size: 35px;
 		margin-left: 200px;
 	}
 }

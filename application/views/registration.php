@@ -1,9 +1,19 @@
-<div class="container">
+<div class="container red">
 <div class="wrapper">
    <img src="<?php echo base_url('assets/img/bg.png') ?>" class="img-responsive" alt="Responsive image">
 </div>
 
 <div class="menu">
+      <div class="nav">
+
+      <ul class="row">
+        <li Class="col-md-6"></li>
+        <li Class="col-md-2"><a href="<?php echo site_url(); ?>">BERANDA</a></li>
+        <li Class="col-md-2 active"><a href="<?php echo site_url('registration'); ?>">PENDAFTARAN</a></li>
+        <li Class="col-md-2"><a href="<?php echo site_url('requirement'); ?>">SYARAT & KETENTUAN</a></li>
+      </ul>
+
+    </div>
     <div class="row">
         <div class="col-md-6">
 
@@ -61,13 +71,23 @@
               </div>
 
               <div class="form-group">
-                <label>Kategori Foto</label>
-                <input type="Name" name="category" class="form-control" placeholder="Kategori Foto" required data-parsley-required="true">
+                 <label>Kategori Foto</label>
+                  <select class="form-control" name="category" required data-parsley-required="true">
+                      <option value="events">Events*</option>
+                      <option value="sport_news">Sport News*</option>
+                      <option value="human_interest">Human Interest</option>
+                      <option value="seni_budaya">Seni dan Budaya</option>
+                      <option value="alam_panorama">Alam dan Panorama</option>
+                      <option value="selfie">Selfie*</option>
+                  </select>
+                  <span style="color: #fff;">*harus berkaitan dengan peristiwa perayaan Ekspedisi Kapsul Waktu, perayaan 17 Agustus 2015, 
+                  atau perayaan adat di wilayah Provinsi masing-masing.
+                  </span>
               </div>
 
               <div class="form-group">
                 <label>Deskripsi Foto</label>
-                <input type="Name" name="description" class="form-control" placeholder="Deskripsi Foto" required data-parsley-required="true">
+                <textarea class="form-control" name="description" rows="3" placeholder="Deskripsi Foto" required data-parsley-required="true"></textarea>
               </div>
 
               <div class="form-group">
@@ -107,6 +127,8 @@
 <script type="text/javascript">
   $(function () {
       $('#datetimeage').datetimepicker({ format: 'DD-MM-YYYY' });
+      $('.carousel').carousel();
+      $("#toogles1").click(function(){ });
   });
 
   $('.fileinput').fileinput();
