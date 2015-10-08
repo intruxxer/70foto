@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.2
+-- version 4.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 29, 2015 at 10:50 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.27
+-- Generation Time: Oct 08, 2015 at 12:51 AM
+-- Server version: 5.6.23
+-- PHP Version: 5.5.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -35,6 +35,9 @@ CREATE TABLE IF NOT EXISTS `tbl_registration` (
   `registration_image_dir` varchar(12) NOT NULL,
   `registration_idcard` varchar(255) NOT NULL,
   `registration_photo` varchar(255) NOT NULL,
+  `registration_photo_title` varchar(100) NOT NULL,
+  `registration_photo_category` varchar(50) NOT NULL,
+  `registration_photo_description` text NOT NULL,
   `registration_favourited` int(1) NOT NULL DEFAULT '0',
   `registration_deleted` int(1) NOT NULL DEFAULT '0',
   `registration_created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP

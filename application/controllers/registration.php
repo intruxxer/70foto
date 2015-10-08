@@ -58,13 +58,16 @@ class Registration extends CI_Controller {
   		{
     			$docs_uploaded_path = $this->docs_upload($_FILES['userfiles']);
           $data = array(
-                'registration_name'         => $this->input->post('nama'),
-                'registration_age'          => $this->input->post('umur'),
-                'registration_address'      => $this->input->post('alamat'),
-                'registration_phone'        => $this->input->post('phone'),
-                'registration_image_dir'    => date('d-m-Y', strtotime('now')),
-                'registration_idcard'       => $docs_uploaded_path[0]['orig_name'],
-                'registration_photo'        => $docs_uploaded_path[1]['orig_name']
+                'registration_name'               => $this->input->post('nama'),
+                'registration_age'                => $this->input->post('umur'),
+                'registration_address'            => $this->input->post('alamat'),
+                'registration_phone'              => $this->input->post('phone'),
+                'registration_image_dir'          => date('d-m-Y', strtotime('now')),
+                'registration_idcard'             => $docs_uploaded_path[0]['orig_name'],
+                'registration_photo'              => $docs_uploaded_path[1]['orig_name'],
+                'registration_photo_title'        => $this->input->post('title'),
+                'registration_photo_category'     => $this->input->post('category'),
+                'registration_photo_description'  => $this->input->post('description'),
           );
 
           $insert_id = $this->registration->insert_registration($data);
