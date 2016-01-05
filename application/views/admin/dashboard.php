@@ -10,7 +10,18 @@
     <div class="clearfix"></div>
     <div class="row">
         <?php if( $this->session->userdata('logged_in') ) { ?><label style="float: right;"><a href="<?php echo site_url('auth/logout'); ?>" class="btn btn-danger">Sign out</a></label><?php } ?>
-        <label style="float: left;"><input type="checkbox" class="vote_filter" <?php if($filter=='active') echo 'checked="checked"' ?>> Filter</label>
+        <label style="float: right;">&nbsp;&nbsp;</label>
+        <label style="float: right;">
+          <select class="form-control topic_filter" name="category" required="" data-parsley-required="true">
+              <option value="events">Events</option>
+              <option value="sport_news">Sport News</option>
+              <option value="human_interest">Human Interest</option>
+              <option value="seni_budaya">Seni dan Budaya</option>
+              <option value="alam_panorama">Alam dan Panorama</option>
+              <option value="selfie">Selfie</option>
+          </select>
+        </label>
+        <label style="float: left;"><input type="checkbox" class="vote_filter" <?php if($filter=='active') echo 'checked="checked"' ?>> Favorite</label>
     </div>
     <div class="row"><hr></div>
     <div class="row">
@@ -42,6 +53,11 @@
             var url = "<?php echo site_url('admin/dashboard') ?>";
             window.location = url;
         }
+  });
+
+  $('.topic_filter').change(function() {
+            var url = "<?php echo site_url('admin/dashboard/topic/" + this.value + "') ?>";
+            window.location = url;
   });
 
   $('.vote').change(function() {
