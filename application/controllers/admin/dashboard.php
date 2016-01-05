@@ -50,6 +50,8 @@ class Dashboard extends CI_Controller {
             $data['filter']   = 'inactive';
           }
 
+          $data['total_foto'] = $config['total_rows'];
+
           $config['suffix']           = '';
           $config['first_url']        = $config['base_url'] . $config['suffix'];
           $config['num_links']        = 20;
@@ -94,17 +96,18 @@ class Dashboard extends CI_Controller {
           $config['per_page']     = 48;
 
           $config['total_rows']   = count($this->registration->get_all_registration_by_topic($topic));
-          echo $config['total_rows'] ;
           $config['base_url']     = site_url('admin/dashboard/topic/'.$topic);
           $config['uri_segment']  = 5;
           $page_offset            = $this->uri->segment(5);
 
           if($page_offset)//page 2 & onwards
-            $data['all_foto'] = $this->registration->get_some_registration($config['per_page'], $page_offset, $topic);
+            $data['all_foto'] = $this->registration->get_some_registration_by_topic($config['per_page'], $page_offset, $topic);
           elseif($config['total_rows'] > $config['per_page'])//page 1, foto > per page
-            $data['all_foto'] = $this->registration->get_some_registration($config['per_page'], 0, $topic);
+            $data['all_foto'] = $this->registration->get_some_registration_by_topic($config['per_page'], 0, $topic);
           else//page 1, foto <= per page
             $data['all_foto'] = $this->registration->get_all_registration_by_topic($topic);
+
+          $data['total_foto'] = $config['total_rows'];
 
           $config['suffix']           = '';
           $config['first_url']        = $config['base_url'] . $config['suffix'];

@@ -23,6 +23,7 @@
         </label>
         <label style="float: left;"><input type="checkbox" class="vote_filter" <?php if($filter=='active') echo 'checked="checked"' ?>> Favorite</label>
     </div>
+    <div class="row">Number of Photos: <?php echo $total_foto; ?>.</div>
     <div class="row"><hr></div>
     <div class="row">
         <ul class="thumbnails" id="thumbnails">
