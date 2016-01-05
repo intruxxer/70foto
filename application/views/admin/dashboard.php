@@ -13,6 +13,8 @@
         <label style="float: right;">&nbsp;&nbsp;</label>
         <label style="float: right;">
           <select class="form-control topic_filter" name="category" required="" data-parsley-required="true">
+              <option value="">Select Category</option>
+              <option value="">Uncategorized</option>
               <option value="events">Events</option>
               <option value="sport_news">Sport News</option>
               <option value="human_interest">Human Interest</option>
@@ -23,7 +25,10 @@
         </label>
         <label style="float: left;"><input type="checkbox" class="vote_filter" <?php if($filter=='active') echo 'checked="checked"' ?>> Favorite</label>
     </div>
-    <div class="row">Number of Photos: <?php echo $total_foto; ?>.</div>
+    <div class="row"><b><?php echo $total_foto; ?> Photos</b>.</div>
+    <div id="myDiv" class="row">
+      <i class="glyphicon glyphicon-download" data-toggle="tooltip" data-placement="top" title="Tooltip Icon" data-original-title="Tooltip on top"></i>  
+    </div>
     <div class="row"><hr></div>
     <div class="row">
         <ul class="thumbnails" id="thumbnails">
@@ -32,9 +37,13 @@
             <label>
               <input type="checkbox" name="<?php echo $all_foto[$i]->registration_id ?>" class="vote" <?php if($all_foto[$i]->registration_favourited == '1') echo 'checked="checked"' ?>>
               Favorite #<?php echo $all_foto[$i]->registration_id; ?>!</label>
-            <a href="<?php echo base_url('files/'.$all_foto[$i]->registration_image_dir .'/' .$all_foto[$i]->registration_photo) ?>" target="_blank" style="float: right;" class="download"><i class="glyphicon glyphicon-download"></i></a>
-            <a href="" name="<?php echo $all_foto[$i]->registration_id ?>" class="delete" style="float: right;"><i class="glyphicon glyphicon-trash"></i> &nbsp;</a>
-            <a href="<?php echo base_url('files/'.$all_foto[$i]->registration_image_dir .'/' .$all_foto[$i]->registration_photo) ?>" class="thumbnail">
+              <?php $pics_info = $all_foto[$i]->registration_photo_title." by ".ucwords($all_foto[$i]->registration_name)."(".$all_foto[$i]->registration_phone.")"; ?>
+              <a href="">
+                <i class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="top" title="<?php echo $pics_info; ?>" data-original-title="Pics Information"></i>
+              </a>
+              <a href="<?php echo base_url('files/'.$all_foto[$i]->registration_image_dir .'/' .$all_foto[$i]->registration_photo) ?>" target="_blank" style="float: right;" class="download"><i class="glyphicon glyphicon-download"></i></a>
+              <a href="" name="<?php echo $all_foto[$i]->registration_id ?>" class="delete" style="float: right;"><i class="glyphicon glyphicon-trash"></i> &nbsp;</a>
+              <a href="<?php echo base_url('files/'.$all_foto[$i]->registration_image_dir .'/' .$all_foto[$i]->registration_photo) ?>" class="thumbnail">
               <img src="<?php echo base_url('files/'.$all_foto[$i]->registration_image_dir .'/' .$all_foto[$i]->registration_photo) ?>" alt="" />
               <span class="caption"><i class="glyphicon glyphicon-search"></i></span>
             </a>
@@ -45,6 +54,8 @@
     <?php echo $this->pagination->create_links(); ?>
 </div>
 <script type="text/javascript">
+
+  $("[data-toggle='tooltip']").tooltip();
 
   $('.vote_filter').change(function() {
         if($(this).is(":checked")) {
