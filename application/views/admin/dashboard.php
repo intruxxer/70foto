@@ -37,7 +37,7 @@
             <label>
               <input type="checkbox" name="<?php echo $all_foto[$i]->registration_id ?>" class="vote" <?php if($all_foto[$i]->registration_favourited == '1') echo 'checked="checked"' ?>>
               Favorite #<?php echo $all_foto[$i]->registration_id; ?>!</label>
-              <?php $pics_info = $all_foto[$i]->registration_photo_title." by ".ucwords($all_foto[$i]->registration_name)."(".$all_foto[$i]->registration_phone.")"; ?>
+              <?php $pics_info = $all_foto[$i]->registration_photo_title." by ".ucwords($all_foto[$i]->registration_name)." (".$all_foto[$i]->registration_phone.")"; ?>
               <a href="">
                 <i class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="top" title="<?php echo $pics_info; ?>" data-original-title="Pics Information"></i>
               </a>
