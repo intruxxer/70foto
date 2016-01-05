@@ -94,6 +94,7 @@ class Dashboard extends CI_Controller {
           $config['per_page']     = 48;
 
           $config['total_rows']   = count($this->registration->get_all_registration_by_topic($topic));
+          echo $config['total_rows'] ;
           $config['base_url']     = site_url('admin/dashboard/topic/'.$topic);
           $config['uri_segment']  = 5;
           $page_offset            = $this->uri->segment(5);
