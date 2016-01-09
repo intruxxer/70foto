@@ -154,9 +154,9 @@ class Dashboard extends CI_Controller {
             $name = 'kapsulwaktu.zip';
             $file = 'files/'.$name; //.'_'.$file_date;
 
-            ob_start();
+            //ob_start();
             system("zip -r ".$file." ".$path);
-            ob_end_clean();
+            //ob_end_clean();
             redirect('admin/dashboard','refresh');
         }
         else
