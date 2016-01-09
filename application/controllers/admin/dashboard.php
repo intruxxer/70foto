@@ -182,30 +182,32 @@ class Dashboard extends CI_Controller {
 
             $fp = @fopen($path.'/'.$name, 'rb');
 
-            echo $fp; die();
-
             if (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE"))
             {
-              header('Content-Type: "application/octet-stream application/zip"');
-              header("Content-Description: File Transfer");
+              header('Content-Description: File Transfer');
+              header('Content-Type: application/octet-stream');
               header('Content-Disposition: attachment; filename="'.$name.'"');
-              //header('Expires: 0');
-              //header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+              header('Expires: 0');
+              header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
               header("Content-Transfer-Encoding: binary");
-              //header('Pragma: public');
-              header('"Content-Length: '.filesize($path.'/'.$name).'"');
+              header('Pragma: public');
+              header('Content-Length: ' . filesize($path.'/'.$name));
               readfile($path.'/'.$name);
+
+              echo "user agent: IE"."(".$path.'/'.$name.")";
             }
             else
             {
               header('Content-Type: "application/octet-stream application/zip"');
               header("Content-Description: File Transfer");
               header('Content-Disposition: attachment; filename="'.$name.'"');
-              //header('Expires: 0');
+              header('Expires: 0');
               header("Content-Transfer-Encoding: binary");
-              //header('Pragma: no-cache');
-              header('"Content-Length: '.filesize($path.'/'.$name.'"'));
+              header('Pragma: no-cache');
+              header('Content-Length: ' . filesize($path.'/'.$name));
               readfile($path.'/'.$name);
+
+              echo "user agent: non-IE"."(".$path.'/'.$name.")";
             }
 
             fpassthru($fp);
@@ -213,7 +215,7 @@ class Dashboard extends CI_Controller {
 
         }else
         {
-            redirect('login', 'refresh');
+            redirect('auth', 'refresh');
         }
   }
 
@@ -259,7 +261,7 @@ class Dashboard extends CI_Controller {
 
         }else
         {
-            redirect('login', 'refresh');
+            redirect('auth', 'refresh');
         }
   }
 
