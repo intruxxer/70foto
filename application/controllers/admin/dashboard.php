@@ -179,13 +179,13 @@ class Dashboard extends CI_Controller {
             //ob_start();
             //system("zip -r ".$file." ".$path);
             //ob_end_clean();
-
+            /*
             $fp = @fopen($path.'/'.$name, 'rb');
 
             if (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE"))
             {
               header('Content-Description: File Transfer');
-              header('Content-Type: application/octet-stream');
+              header('Content-Type: application/zip'); //application/octet-stream
               header('Content-Disposition: attachment; filename="'.$name.'"');
               header('Expires: 0');
               header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -198,8 +198,8 @@ class Dashboard extends CI_Controller {
             }
             else
             {
-              header('Content-Type: "application/octet-stream application/zip"');
               header("Content-Description: File Transfer");
+              header('Content-Type: "application/zip"'); //application/octet-stream
               header('Content-Disposition: attachment; filename="'.$name.'"');
               header('Expires: 0');
               header("Content-Transfer-Encoding: binary");
@@ -213,9 +213,9 @@ class Dashboard extends CI_Controller {
 
             fpassthru($fp);
             fclose($fp);
+            */
 
             //ORIGINAL WORKING CODE
-            /*
             $yourfile  = "files/kapsulwaktu.zip"; // /home/kapsulwaktu2015/
             $file_name = basename($yourfile);
 
@@ -225,7 +225,6 @@ class Dashboard extends CI_Controller {
             ob_clean();
             flush();
             readfile($yourfile);
-            */
 
         }else
         {
