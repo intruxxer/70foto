@@ -184,22 +184,22 @@ class Dashboard extends CI_Controller {
 
             if (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE"))
             {
-              header('Content-Type: "application/zip"');
+              header('Content-Type: "application/octet-stream application/zip"');
               header('Content-Disposition: attachment; filename="'.$name.'"');
-              header('Expires: 0');
-              header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+              //header('Expires: 0');
+              //header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
               header("Content-Transfer-Encoding: binary");
-              header('Pragma: public');
-              header("Content-Length: ".filesize($path.'/'.$name));
+              //header('Pragma: public');
+              header('"Content-Length: '.filesize($path.'/'.$name).'"');
             }
             else
             {
-              header('Content-Type: "application/zip"');
+              header('Content-Type: "application/octet-stream application/zip"');
               header('Content-Disposition: attachment; filename="'.$name.'"');
+              //header('Expires: 0');
               header("Content-Transfer-Encoding: binary");
-              header('Expires: 0');
-              header('Pragma: no-cache');
-              header("Content-Length: ".filesize($path.'/'.$name));
+              //header('Pragma: no-cache');
+              header('"Content-Length: '.filesize($path.'/'.$name.'"'));
             }
 
             fpassthru($fp);
@@ -207,7 +207,7 @@ class Dashboard extends CI_Controller {
 
         }else
         {
-            redirect('auth', 'refresh');
+            redirect('login', 'refresh');
         }
   }
 
@@ -253,7 +253,7 @@ class Dashboard extends CI_Controller {
 
         }else
         {
-            redirect('auth', 'refresh');
+            redirect('login', 'refresh');
         }
   }
 
