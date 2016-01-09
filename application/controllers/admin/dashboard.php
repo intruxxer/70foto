@@ -185,21 +185,25 @@ class Dashboard extends CI_Controller {
             if (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE"))
             {
               header('Content-Type: "application/octet-stream application/zip"');
+              header("Content-Description: File Transfer");
               header('Content-Disposition: attachment; filename="'.$name.'"');
               //header('Expires: 0');
               //header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
               header("Content-Transfer-Encoding: binary");
               //header('Pragma: public');
               header('"Content-Length: '.filesize($path.'/'.$name).'"');
+              readfile($path.'/'.$name);
             }
             else
             {
               header('Content-Type: "application/octet-stream application/zip"');
+              header("Content-Description: File Transfer");
               header('Content-Disposition: attachment; filename="'.$name.'"');
               //header('Expires: 0');
               header("Content-Transfer-Encoding: binary");
               //header('Pragma: no-cache');
               header('"Content-Length: '.filesize($path.'/'.$name.'"'));
+              readfile($path.'/'.$name);
             }
 
             fpassthru($fp);
