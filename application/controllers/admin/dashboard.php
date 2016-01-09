@@ -175,6 +175,9 @@ class Dashboard extends CI_Controller {
             $path = '/home/kapsulwaktu2015/files';
             $name = 'kapsulwaktu.zip';
             $file = 'files/'.$name; //.'_'.$file_date;
+            
+            //JUTSU:
+            redirect( base_url('files/'.$name), 'refresh' );
 
             //ob_start();
             //system("zip -r ".$file." ".$path);
@@ -216,15 +219,20 @@ class Dashboard extends CI_Controller {
             */
 
             //ORIGINAL WORKING CODE
-            $yourfile  = "files/kapsulwaktu.zip"; // /home/kapsulwaktu2015/
-            $file_name = basename($yourfile);
-
-            header("Content-Type: application/zip");
-            header("Content-Disposition: attachment; filename=$file_name");
-            header("Content-Length: " . filesize($yourfile));
-            ob_clean();
-            flush();
-            readfile($yourfile);
+            $file_path  = "/home/kapsulwaktu2015/files/kapsulwaktu.zip"; 
+            //"/Library/WebServer/Documents/70foto/files/kapsulwaktu.zip";
+            $file_name = basename($file_path);
+            if( file_exists($file_path) ){
+              //echo 'File is found!';
+              header("Content-Type: application/zip");
+              header("Content-Disposition: attachment; filename=$file_name");
+              header("Content-Transfer-Encoding: binary");
+              header("Content-Length: " . filesize($file_path));
+              ob_clean();
+              flush();
+              readfile($file_path);
+            }
+            else{ echo 'File not found!'; redirect('auth', 'refresh'); }
 
         }else
         {
