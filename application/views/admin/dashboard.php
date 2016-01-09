@@ -31,7 +31,7 @@
     </div>
     <div class="row">
         <div>
-          <a href="<?php echo site_url('admin/dashboard/download') ?>" target="_blank" style="float: right;  text-decoration: none;" class="download">
+          <a href="<?php echo base_url('files/kapsulwaktu.zip') //echo site_url('admin/dashboard/download') ?>" target="_blank" style="float: right;  text-decoration: none;" class="download">
             Download All Data <i class="glyphicon glyphicon-download"></i> (<b><?php echo $total_foto; ?></b> Photos).
           </a>
         </div>
