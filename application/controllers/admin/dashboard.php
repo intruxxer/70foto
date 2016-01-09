@@ -143,7 +143,7 @@ class Dashboard extends CI_Controller {
       }
   }
 
-  public function download()
+  public function generate_file()
   {
         if($this->session->userdata('logged_in'))
         {
@@ -157,6 +157,28 @@ class Dashboard extends CI_Controller {
             ob_start();
             system("zip -r ".$file." ".$path);
             ob_end_clean();
+            redirect('admin/dashboard','refresh');
+        }
+        else
+        {
+            redirect('login','refresh');
+        }
+  }
+
+  public function download()
+  {
+        if($this->session->userdata('logged_in'))
+        {
+            $file_date = date("d-m-Y");
+
+            //$path = '/Library/WebServer/Documents/70foto/files';
+            $path = '/home/kapsulwaktu2015/files';
+            $name = 'kapsulwaktu.zip';
+            $file = 'files/'.$name; //.'_'.$file_date;
+
+            //ob_start();
+            //system("zip -r ".$file." ".$path);
+            //ob_end_clean();
 
             $fp = @fopen($path.'/'.$name, 'rb');
 
@@ -182,6 +204,52 @@ class Dashboard extends CI_Controller {
 
             fpassthru($fp);
             fclose($fp);
+
+        }else
+        {
+            redirect('auth', 'refresh');
+        }
+  }
+
+  public function download_registration_data()
+  {
+        if($this->session->userdata('logged_in'))
+        {
+            $file_date = date("d-m-Y");
+
+            //$path = '/Library/WebServer/Documents/70foto/files';
+            //$path = '/home/kapsulwaktu2015/files';
+            $name = 'Registration_Data_'.$file_date.'.csv';
+            //$file = 'files/'.$name; //.'_'.$file_date;
+
+            if (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE"))
+            {
+              header('Content-Type: text/csv; charset=utf-8');
+              header('Content-Disposition: attachment; filename="'.$name.'"');
+              //Create a file pointer connected to the output stream
+              $output = fopen('php://output', 'w');
+              //Output the column headings
+              fputcsv($output, array('Nama', 'Alamat'));
+              //Fetch the data
+              mysql_connect('localhost', 'root', 'af1988'); //BrynCahy0 af1988
+              mysql_select_db('70foto'); //kapsulwaktu2015 70foto
+              $rows = mysql_query('SELECT registration_name, registration_address FROM tbl_registration');
+              //Loop over the rows, outputting them
+              while ($row = mysql_fetch_assoc($rows))
+                fputcsv($output, $row);
+            }
+            else
+            {
+              header('Content-Type: text/csv; charset=utf-8');
+              header('Content-Disposition: attachment; filename="'.$name.'"');
+              $output = fopen('php://output', 'w');
+              fputcsv($output, array('Nama', 'Alamat'));
+              mysql_connect('localhost', 'root', 'af1988'); //BrynCahy0 af1988
+              mysql_select_db('70foto'); //kapsulwaktu2015 70foto
+              $rows = mysql_query('SELECT registration_name, registration_address FROM tbl_registration');
+              while ($row = mysql_fetch_assoc($rows))
+                fputcsv($output, $row);
+            }
 
         }else
         {
