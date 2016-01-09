@@ -38,7 +38,7 @@
         <br/>
         <div>
           <a href="<?php echo site_url('admin/dashboard/download_registration_data') ?>" target="_blank" style="float: right;  text-decoration: none;" class="download">
-            Download Registration Data <i class="glyphicon glyphicon-file"></i> (<b><?php echo $total_foto; ?></b> Photos).
+            Download Registration Data <i class="glyphicon glyphicon-file"></i> (<b><?php echo $total_foto; ?></b> Entries).
           </a>
         </div>
     </div>
