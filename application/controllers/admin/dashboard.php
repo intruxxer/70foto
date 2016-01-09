@@ -215,13 +215,14 @@ class Dashboard extends CI_Controller {
             //fpassthru($fp);
             //fclose($fp);
 
-            $yourfile = "/home/kapsulwaktu2015/files/kapsulwaktu.zip";
+            $yourfile  = "files/kapsulwaktu.zip"; // /home/kapsulwaktu2015/
             $file_name = basename($yourfile);
 
             header("Content-Type: application/zip");
             header("Content-Disposition: attachment; filename=$file_name");
             header("Content-Length: " . filesize($yourfile));
-
+            ob_clean();
+            flush();
             readfile($yourfile);
 
         }else
