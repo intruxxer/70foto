@@ -180,9 +180,8 @@ class Dashboard extends CI_Controller {
             //system("zip -r ".$file." ".$path);
             //ob_end_clean();
 
-            //$fp = @fopen($path.'/'.$name, 'rb');
+            $fp = @fopen($path.'/'.$name, 'rb');
 
-            /*
             if (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE"))
             {
               header('Content-Description: File Transfer');
@@ -193,9 +192,9 @@ class Dashboard extends CI_Controller {
               header("Content-Transfer-Encoding: binary");
               header('Pragma: public');
               header('Content-Length: ' . filesize($path.'/'.$name));
+              ob_clean();
+              flush();
               readfile($path.'/'.$name);
-
-              echo "user agent: IE"."(".$path.'/'.$name.")"; die();
             }
             else
             {
@@ -206,15 +205,17 @@ class Dashboard extends CI_Controller {
               header("Content-Transfer-Encoding: binary");
               header('Pragma: no-cache');
               header('Content-Length: ' . filesize($path.'/'.$name));
+              ob_clean();
+              flush();
               readfile($path.'/'.$name);
-
-              echo "user agent: non-IE"."(".$path.'/'.$name.")"; die();
             }
-            */
 
-            //fpassthru($fp);
-            //fclose($fp);
 
+            fpassthru($fp);
+            fclose($fp);
+
+            //ORIGINAL WORKING CODE
+            /*
             $yourfile  = "files/kapsulwaktu.zip"; // /home/kapsulwaktu2015/
             $file_name = basename($yourfile);
 
@@ -224,6 +225,7 @@ class Dashboard extends CI_Controller {
             ob_clean();
             flush();
             readfile($yourfile);
+            */
 
         }else
         {
