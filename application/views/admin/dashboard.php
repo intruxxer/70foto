@@ -25,10 +25,24 @@
         </label>
         <label style="float: left;"><input type="checkbox" class="vote_filter" <?php if($filter=='active') echo 'checked="checked"' ?>> Favorite</label>
     </div>
-    <div class="row"><b><?php echo $total_foto; ?> Photos</b>.</div>
+    <div class="row">&nbsp;</div>
     <div id="myDiv" class="row">
-      <i class="glyphicon glyphicon-download" data-toggle="tooltip" data-placement="top" title="Tooltip Icon" data-original-title="Tooltip on top"></i>  
+      <span style="float: right;  text-decoration: none;" >Download <i class="glyphicon glyphicon-download-alt" data-toggle="tooltip" data-placement="top" title="Donwload All Files Here" data-original-title="Tooltip on top"></i></span>
     </div>
+    <div class="row">
+        <div>
+          <a href="<?php echo site_url('admin/dashboard/download') ?>" target="_blank" style="float: right;  text-decoration: none;" class="download">
+            Download All Data <i class="glyphicon glyphicon-download"></i> (<b><?php echo $total_foto; ?></b> Photos).
+          </a>
+        </div>
+        <br/>
+        <div>
+          <a href="<?php echo site_url('admin/dashboard/download') ?>" target="_blank" style="float: right;  text-decoration: none;" class="download">
+            Download Registration Data <i class="glyphicon glyphicon-file"></i> (<b><?php echo $total_foto; ?></b> Photos).
+          </a>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
     <div class="row"><hr></div>
     <div class="row">
         <ul class="thumbnails" id="thumbnails">

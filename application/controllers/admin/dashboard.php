@@ -89,7 +89,7 @@ class Dashboard extends CI_Controller {
   public function topic($topic='uncategorized')
   {
       //echo $topic; die();
-        
+
       if( $this->session->userdata('logged_in') )
       {
           //Pagination
@@ -141,6 +141,52 @@ class Dashboard extends CI_Controller {
       {
           redirect('login','refresh');
       }
+  }
+
+  public function download()
+  {
+        if($this->session->userdata('logged_in'))
+        {
+            $file_date = date("d-m-Y");
+
+            //$path = '/Library/WebServer/Documents/70foto/files';
+            $path = '/home/kapsulwaktu2015/files';
+            $name = 'kapsulwaktu.zip';
+            $file = 'files/'.$name; //.'_'.$file_date;
+
+            ob_start();
+            system("zip -r ".$file." ".$path);
+            ob_end_clean();
+
+            $fp = @fopen($path.'/'.$name, 'rb');
+
+            if (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE"))
+            {
+              header('Content-Type: "application/octet-stream"');
+              header('Content-Disposition: attachment; filename="'.$name.'"');
+              header('Expires: 0');
+              header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+              header("Content-Transfer-Encoding: binary");
+              header('Pragma: public');
+              header("Content-Length: ".filesize($path.'/'.$name));
+            }
+            else
+            {
+              header('Content-Type: "application/octet-stream"');
+              header('Content-Disposition: attachment; filename="'.$name.'"');
+              header("Content-Transfer-Encoding: binary");
+              header('Expires: 0');
+              header('Pragma: no-cache');
+              header("Content-Length: ".filesize($path.'/'.$name));
+            }
+
+            fpassthru($fp);
+            fclose($fp);
+
+        }else
+        {
+            redirect('auth', 'refresh');
+        }
   }
 
 }
