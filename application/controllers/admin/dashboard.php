@@ -180,8 +180,9 @@ class Dashboard extends CI_Controller {
             //system("zip -r ".$file." ".$path);
             //ob_end_clean();
 
-            $fp = @fopen($path.'/'.$name, 'rb');
+            //$fp = @fopen($path.'/'.$name, 'rb');
 
+            /*
             if (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE"))
             {
               header('Content-Description: File Transfer');
@@ -209,9 +210,19 @@ class Dashboard extends CI_Controller {
 
               echo "user agent: non-IE"."(".$path.'/'.$name.")"; die();
             }
+            */
 
-            fpassthru($fp);
-            fclose($fp);
+            //fpassthru($fp);
+            //fclose($fp);
+
+            $yourfile = "/home/kapsulwaktu2015/files/kapsulwaktu.zip";
+            $file_name = basename($yourfile);
+
+            header("Content-Type: application/zip");
+            header("Content-Disposition: attachment; filename=$file_name");
+            header("Content-Length: " . filesize($yourfile));
+
+            readfile($yourfile);
 
         }else
         {
