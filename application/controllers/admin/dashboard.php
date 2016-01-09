@@ -170,6 +170,7 @@ class Dashboard extends CI_Controller {
         if($this->session->userdata('logged_in'))
         {
             $file_date = date("d-m-Y");
+            echo 'Download at: '.$file_date; die();
 
             //$path = '/Library/WebServer/Documents/70foto/files';
             $path = '/home/kapsulwaktu2015/files';
