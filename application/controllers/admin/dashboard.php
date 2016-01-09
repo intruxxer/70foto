@@ -194,7 +194,7 @@ class Dashboard extends CI_Controller {
               header('Content-Length: ' . filesize($path.'/'.$name));
               readfile($path.'/'.$name);
 
-              echo "user agent: IE"."(".$path.'/'.$name.")";
+              echo "user agent: IE"."(".$path.'/'.$name.")"; die();
             }
             else
             {
@@ -207,7 +207,7 @@ class Dashboard extends CI_Controller {
               header('Content-Length: ' . filesize($path.'/'.$name));
               readfile($path.'/'.$name);
 
-              echo "user agent: non-IE"."(".$path.'/'.$name.")";
+              echo "user agent: non-IE"."(".$path.'/'.$name.")"; die();
             }
 
             fpassthru($fp);
