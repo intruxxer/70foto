@@ -175,7 +175,7 @@ class Dashboard extends CI_Controller {
             $path = '/home/kapsulwaktu2015/files';
             $name = 'kapsulwaktu.zip';
             $file = 'files/'.$name; //.'_'.$file_date;
-            
+
             //JUTSU:
             redirect( base_url('files/'.$name), 'refresh' );
 
@@ -219,7 +219,7 @@ class Dashboard extends CI_Controller {
             */
 
             //ORIGINAL WORKING CODE
-            $file_path  = "/home/kapsulwaktu2015/files/kapsulwaktu.zip"; 
+            $file_path  = "/home/kapsulwaktu2015/files/kapsulwaktu.zip";
             //"/Library/WebServer/Documents/70foto/files/kapsulwaktu.zip";
             $file_name = basename($file_path);
             if( file_exists($file_path) ){
@@ -272,10 +272,13 @@ class Dashboard extends CI_Controller {
               header('Content-Type: text/csv; charset=utf-8');
               header('Content-Disposition: attachment; filename="'.$name.'"');
               $output = fopen('php://output', 'w');
-              fputcsv($output, array('Nama', 'Alamat'));
+              fputcsv($output, array('Nama', 'No Telpon', 'Alamat', 'Nama Folder', 'Nama File KTP', 'Nama File Foto', 'Judul Foto', 'Kategori Foto', 'Deskripsi Foto', 'Difavoritkan? (Y=1, N=0)'));
               mysql_connect('localhost', 'root', 'af1988'); //BrynCahy0 af1988
               mysql_select_db('70foto'); //kapsulwaktu2015 70foto
-              $rows = mysql_query('SELECT registration_name, registration_address FROM tbl_registration');
+              $rows = mysql_query('SELECT registration_name, registration_phone, registration_address, registration_image_dir, '
+                                 .'registration_idcard, registration_photo, registration_photo_title, registration_photo_category,  '
+                                 .'registration_photo_description, registration_favourited '
+                                 .'FROM tbl_registration');
               while ($row = mysql_fetch_assoc($rows))
                 fputcsv($output, $row);
             }
