@@ -45,7 +45,7 @@
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
               </a>
-            </div> 
+            </div>
 
         </div>
         <div class="col-md-6">
@@ -53,25 +53,25 @@
 
         </div>
 
-        <div class="col-md-6 homeDescr">        
+        <div class="col-md-6 homeDescr">
             <h2>Ekspedisi Kapsul Waktu
                 Memperingati 70 Tahun Indonesia Merdeka
                 Indonesia Raya Melintasi Waktu
             </h2>
             <p>Sayembara Foto Nasional bertujuan untuk mengumpulkan hasil foto terbaik dari seluruh provinsi di Indonesia untuk dikompilasi dalam satu album foto nasional yang akan disimpan di museum nasional. Sayembara Foto ini berkaitan dengan Ekspedisi Kapsul Waktu 2015 yang telah dimulai pada bulan Maret 2015 di titik nol Sabang.</p>
-            
+
                     <p>Ekspedisi kapsul waktu adalah kegiatan mengumpulkan mimpi masyarakat seluruh Indonesia dari Sabang sampai Merauke yang ditulis, dimasukkan ke dalam kapsul dan akan diletakkan dalam sebuah monumen di Merauke untuk dibuka pada 70 tahun yang akan datang. Mimpi tersebut akan digali dari masyarakat di setiap propinsi dan akan dikirab melewati ibukota propinsi dengan iringan mobil.
-                         
+
                         Ekspedisi ini akan menjadi media untuk mengungkap harapan masyarakat untuk Indonesia di masa mendatang di dalam bingkai keanekaragaman suku, budaya, serta panorama alam Indonesia.
                     </p>
-                
+
             </div>
-            
+
         </div>
     </div>
 </div> -->
 
 <div>
-                    <img src="<?php echo base_url('assets/img/img-new.jpg') ?>">
+                    <img src="<?php echo base_url('assets/img/img-newest.jpg') ?>">
 
 </div>
